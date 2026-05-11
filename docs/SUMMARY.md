@@ -36,6 +36,9 @@
 - [Extlinux.conf Support](extlinux.conf-support.md)
 - [Applying-PREEMPT-RT-Real-Time-Kernel-Patches.md](Applying-PREEMPT-RT-Real-Time-Kernel-Patches.md)
 
+# Reference
+- [Variable Glossary](variable-glossary.md)
+
 # Maintainer Guides
 - [Documentation Workflow](Documentation-Workflow.md)
 
