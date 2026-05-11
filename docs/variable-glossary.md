@@ -100,11 +100,14 @@ flashing helpers from a per-board list of `TEGRA_FLASHVAR_*` settings.
 | `ODMDATA` | NVIDIA ODM data string written to the boot ROM (configures UPHY, PCIe lanes, etc.). |
 | `TEGRA_BLBLOCKSIZE` | Block size used when computing bootloader partition alignment. |
 | `TEGRA_BOOT_FIRMWARE_FILES` | List of firmware binaries from the L4T BSP that must be staged for flashing. |
+| `TEGRA_BPMP_SERIAL_LOGGING` | Controls whether BPMP serial logging remains enabled in the BPMP DTB (`0` removes `/serial`, `1` keeps it). |
 | `TEGRA_FLASH_CHECK_BOARDID` | Expected BoardID used by the flasher to refuse flashing onto the wrong hardware. |
 | `TEGRA_FLASH_CHECK_BOARDSKU` | Expected BoardSKU used by the flasher's safety check. |
 | `TEGRA_FLASH_CHECK_VARS` | Names of identifiers to verify before flashing (`BOARDID BOARDSKU` by default). |
 | `TEGRA_FLASHVAR_*` | Per-variable overrides (one for every entry in `TEGRA_FLASHVARS`). |
 | `TEGRA_FLASHVARS` | Ordered list of variable names whose `TEGRA_FLASHVAR_<name>` values are written into `flashvars`. |
+| `TEGRA_MB1_LOG_LEVEL` | MB1 boot-stage debug log level injected into the MB1 misc config DTS fragment by `tegra-bootfiles`. |
+| `TEGRA_MB1_MISC_CONFIG_SECTION` | Node name in the MB1 misc config DTS where `TEGRA_MB1_LOG_LEVEL` is written (default `misc`). |
 | `TEGRA_SIGNING_ENV` | Environment string (`CHIPREV=... BOARDID=...`) passed to the BUP/signing tools. |
 | `TEGRA_STAGED_BOOT_FIRMWARE` | All boot firmware staged for flashing (includes `TEGRA_BOOT_FIRMWARE_FILES` plus eks/badpage). |
 
@@ -208,6 +211,7 @@ Most of these variables are introduced or have defaults in:
 - `conf/machine/include/tegra-common.inc` — defaults common to every Tegra MACHINE.
 - `conf/machine/include/tegra234.inc`, `agx-orin.inc`, `orin-nx.inc`, `orin-nano.inc`, … — SoC- and module-specific defaults.
 - `classes-recipe/image_types_tegra.bbclass` — flashing/image-generation helpers.
+- `recipes-bsp/tegra-binaries/tegra-bootfiles_*.bb` — boot firmware staging and MB1/BPMP logging controls.
 - `classes-recipe/l4t_bsp.bbclass`, `classes/l4t_version.bbclass`,
   `classes-recipe/l4t-extlinux-config.bbclass`,
   `classes-recipe/l4t_deb_pkgfeed.bbclass` — L4T BSP plumbing.
